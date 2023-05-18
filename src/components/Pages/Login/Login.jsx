@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const [error, setError] = useState('');
@@ -76,6 +77,10 @@ const Login = () => {
                         >
                             Sign In
                         </button>
+                        <Link
+                            to='/signUp'
+                            className="text-blue-500 hover:underline text-sm"
+                        >Sign Up</Link>
                         <a
                             className="text-blue-500 hover:underline text-sm"
                             href="#"

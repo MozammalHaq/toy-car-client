@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import logo from '../../../../assets/logo.png'
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -35,7 +36,7 @@ const NavBar = () => {
     </>
     return (
         <div className="bg-indigo-600 text-white">
-            <div className="navbar max-w-6xl mx-auto lg:px-6">
+            <div className="navbar max-w-6xl mx-auto lg:px-8">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -45,15 +46,17 @@ const NavBar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Toy Car</a>
+                    <Link to='/'><img src={logo} alt="" /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {navItems}
                     </ul>
                 </div>
-                <div className="navbar-end tooltip tooltip-bottom" data-tip={user?.displayName}>
-                    {user && <img className='h-10 w-10 avatar btn-circle' src={user?.photoURL} />}
+                <div className="navbar-end text-end" >
+                    <span className='tooltip tooltip-bottom' data-tip={user?.displayName}>
+                        {user && <img className='h-10 w-10 avatar btn-circle text-end' src={user?.photoURL} />}
+                    </span>
                 </div>
             </div>
         </div>
