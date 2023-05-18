@@ -1,13 +1,26 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const NavBar = () => {
+    const {user, logOut} = useContext(AuthContext);
+    console.log(user)
+
+    const handleLogout = () => {
+        logOut()
+            .then(result => { })
+            .catch(error => { console.error(error) })
+    }
+
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/allToys'>All Toys</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
-        <li><Link to='/addToys'>AddToys</Link></li>
-        <li><Link to='/myToys'>myToys</Link></li>
+        <li><Link to='/addToys'>Add Toys</Link></li>
+        <li><Link to='/myToys'>My Toys</Link></li>
         <li><Link to='/login'>Login</Link></li>
+        <span>{user?.email}</span>
+        <button onClick={handleLogout}>Log Out</button>
         <li><Link to='/signUp'>Sign Up</Link></li>
     </>
     return (
@@ -29,12 +42,8 @@ const NavBar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
-                    </label>
+                <div className="navbar-end tooltip tooltip-bottom" data-tip={user?.displayName}>
+                    <img className='h-10 w-10 avatar btn-circle' src={user?.photoURL} />
                 </div>
             </div>
         </div>

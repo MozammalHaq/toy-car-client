@@ -4,7 +4,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Login = () => {
     const [error, setError] = useState('');
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInGoogle } = useContext(AuthContext);
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -14,6 +14,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        // Sign In Email and password
         signIn(email, password)
             .then(result => {
                 const user = result.user;
@@ -23,6 +24,19 @@ const Login = () => {
             })
             .catch(error => {
                 setError(error.message)
+            })
+    }
+
+    // Google Sign In
+    const handleGoogleSignIn = () => {
+        signInGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                // navigate(from, { replace: true })
+            })
+            .catch(error => {
+                setError(error.message);
             })
     }
 
@@ -86,7 +100,7 @@ const Login = () => {
                                     d="M12 21c-1.8 0-3.3-.6-4.5-1.7L4 21l1.2-3.6C3.6 15.5 3 13.6 3 11.5s.6-4 2.2-5.4L4 2h6v2H6.6C4.9 4 3.5 6 3.5 8.2S4.9 12.5 6.6 13h5.8c1.7 0 3.1 1.9 3.1 4.1S14,16.9 14,19 16 17.3 16 15.5 16h-2.35z"
                                 ></path>
                             </svg>
-                            <span className="text-gray-600">Google</span>
+                            <span onClick={handleGoogleSignIn} className="text-gray-600">Google</span>
                         </button>
                     </div>
                 </form>
