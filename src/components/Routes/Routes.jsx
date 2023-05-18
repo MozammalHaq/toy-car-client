@@ -9,13 +9,14 @@ import Blogs from "../Pages/Blogs/Blogs";
 import AddToys from "../Pages/AddToys/AddToys";
 import MyToys from "../Pages/MyToys/MyToys";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
-        errorElement: <ErrorPage/>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -39,11 +40,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addToys',
-                element: <AddToys/>
+                element: <PrivateRoute><AddToys /></PrivateRoute>
             },
             {
                 path: '/myToys',
-                element: <MyToys/>
+                element: <MyToys />
             }
         ]
     }
