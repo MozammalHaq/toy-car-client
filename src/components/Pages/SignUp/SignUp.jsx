@@ -1,11 +1,40 @@
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Link } from "react-router-dom";
 
 
 const SignUp = () => {
+
+    const { createUser } = useContext(AuthContext);
+
+    const handleSignIn = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(email, password)
+        
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                form.reset()
+                // navigate(from, { replace: true })
+            })
+            .catch(error => {
+                // setError(error.message)
+                console.log(error)
+            })
+    }
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
             <div className="max-w-md w-full px-6 py-8 bg-white shadow-md rounded-md">
                 <h2 className="text-2xl font-semibold mb-6">Sign Up</h2>
-                <form>
+                <form onSubmit={handleSignIn}>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
                             Name
@@ -14,6 +43,7 @@ const SignUp = () => {
                             className="appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
                             id="name"
                             type="text"
+                            name="name"
                             placeholder="Enter your name"
                         />
                     </div>
@@ -25,6 +55,7 @@ const SignUp = () => {
                             className="appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
                             id="email"
                             type="email"
+                            name="email"
                             placeholder="Enter your email"
                         />
                     </div>
@@ -35,6 +66,7 @@ const SignUp = () => {
                         <input
                             className="appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
                             id="password"
+                            name="password"
                             type="password"
                             placeholder="Enter your password"
                         />
@@ -47,6 +79,7 @@ const SignUp = () => {
                             className="appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
                             id="photoUrl"
                             type="text"
+                            name="url"
                             placeholder="Enter the photo URL"
                         />
                     </div>
@@ -58,9 +91,9 @@ const SignUp = () => {
                         >
                             Sign Up
                         </button>
-                        <a className="text-blue-500 hover:underline text-sm" href="#">
-                            Sign In
-                        </a>
+                        <Link className="text-blue-500 hover:underline text-sm" to='/login'>
+                            Login
+                        </Link>
                     </div>
                     <div className="flex items-center justify-center mt-6">
                         <span className="text-gray-600 mr-2">Or sign up with:</span>
