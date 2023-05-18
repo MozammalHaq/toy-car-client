@@ -3,11 +3,31 @@
 
 
 const AddToys = () => {
+
+    const handleAdd = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+        // console.log(event.target.value)
+        const imageUrl = form.imageUrl.value;
+        const toyName = form.toyName.value;
+        const sellerName = form.sellerName.value;
+        const sellerEmail = form.sellerEmail.value;
+        const subCategory = form.subCategory.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const quantity = form.quantity.value;
+        const description = form.description.value;
+
+        console.log({ imageUrl, toyName, sellerName, sellerEmail, subCategory, price, rating, quantity, description });
+
+    }
+
     return (
         <div className="bg-blue-100 py-10">
             <div className="max-w-md mx-auto shadow-xl p-5 rounded-2xl">
                 <h2 className="text-3xl font-semibold mb-6 text-center text-primary">Add a Toy</h2>
-                <form>
+                <form onSubmit={handleAdd}>
                     <div className="flex gap-4">
                         <div>
                             <div className="mb-4">
@@ -19,19 +39,19 @@ const AddToys = () => {
                                     id="imageUrl"
                                     type="text"
                                     placeholder="Enter image URL"
-                                    required
+                                    name="imageUrl"
                                 />
                             </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                                    Name
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="toyName">
+                                    Name toy
                                 </label>
                                 <input
                                     className="appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
-                                    id="name"
+                                    id="toyName"
                                     type="text"
                                     placeholder="Enter toy car name"
-                                    required
+                                    name="toyName"
                                 />
                             </div>
                             <div className="mb-4">
@@ -43,7 +63,7 @@ const AddToys = () => {
                                     id="sellerName"
                                     type="text"
                                     placeholder="Enter seller name"
-                                    required
+                                    name="sellerName"
                                 />
                             </div>
                             <div className="mb-4">
@@ -55,7 +75,7 @@ const AddToys = () => {
                                     id="sellerEmail"
                                     type="email"
                                     placeholder="Enter seller email"
-                                    required
+                                    name="sellerEmail"
                                 />
                             </div>
                         </div>
@@ -64,13 +84,18 @@ const AddToys = () => {
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="subCategory">
                                     Sub-category
                                 </label>
-                                <input
+                                <select
                                     className="appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
                                     id="subCategory"
                                     type="text"
                                     placeholder="Enter sub-category"
-                                    required
-                                />
+                                    name="subCategory"
+                                >
+                                    <option value="">Racing</option>
+                                    <option value="">Tour</option>
+                                    <option value="">Transformer</option>
+                                    <option value="">Family</option>
+                                </select>
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
@@ -81,7 +106,7 @@ const AddToys = () => {
                                     id="price"
                                     type="number"
                                     placeholder="Enter price"
-                                    required
+                                    name="price"
                                 />
                             </div>
                             <div className="mb-4">
@@ -93,7 +118,7 @@ const AddToys = () => {
                                     id="rating"
                                     type="number"
                                     placeholder="Enter rating"
-                                    required
+                                    name="rating"
                                 />
                             </div>
                             <div className="mb-4">
@@ -105,7 +130,7 @@ const AddToys = () => {
                                     id="quantity"
                                     type="number"
                                     placeholder="Enter available quantity"
-                                    required
+                                    name="quantity"
                                 />
                             </div>
                         </div>
@@ -118,7 +143,7 @@ const AddToys = () => {
                             className="appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full h-32 resize-none"
                             id="description"
                             placeholder="Enter detail description"
-                            required
+                            name="description"
                         ></textarea>
                     </div>
                     <button
