@@ -1,10 +1,10 @@
-import Gallerys from "../Home/Gallerys/Gallerys";
+import Categories from "../Home/Categories/Categories";
 
 
 const AllToys = () => {
     return (
         <div>
-            <Gallerys/>
+            <Categories/>
         </div>
     );
 };

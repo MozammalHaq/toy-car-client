@@ -1,6 +1,6 @@
 
 
-const GalleryCard = ({product}) => {
+const Category = ({product}) => {
     const {id, name, price, rating, imageSrc} = product;
     return (
         <div className="card bg-base-100 shadow-xl overflow-hidden">
@@ -19,4 +19,4 @@ const GalleryCard = ({product}) => {
     );
 };
 
-export default GalleryCard;
+export default Category;

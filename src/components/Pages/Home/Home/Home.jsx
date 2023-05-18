@@ -1,13 +1,13 @@
 import Banner from "../Banner/Banner";
+import Categories from "../Categories/Categories";
 import Comments from "../Comments/Comments";
-import Gallerys from "../Gallerys/Gallerys";
 
 
 const Home = () => {
     return (
         <div>
             <Banner/>
-            <Gallerys/>
+            <Categories/>
             <Comments/>
         </div>
     );
