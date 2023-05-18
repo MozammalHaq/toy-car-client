@@ -4,35 +4,35 @@ const comments = [
     {
         id: 1,
         name: "John Doe",
-        comment: "I'm really impressed with the service. The team went above and beyond to meet my expectations.",
-        imageSrc: "/path/to/avatar1.jpg",
+        description: "I'm really impressed with the service. The team went above and beyond to meet my expectations.",
+        imageSrc: "https://images-na.ssl-images-amazon.com/images/I/61Xuv0TiIRL._AC_UL600_SR600,600_.jpg",
     },
     {
         id: 2,
         name: "Jane Smith",
-        comment: "Excellent work! The quality of the product is outstanding. Highly recommended.",
-        imageSrc: "/path/to/avatar2.jpg",
+        description: "Excellent work! The quality of the product is outstanding. Highly recommended.",
+        imageSrc: "https://images-na.ssl-images-amazon.com/images/I/61Xuv0TiIRL._AC_UL600_SR600,600_.jpg",
     },
     {
         id: 3,
         name: "Mike Johnson",
-        comment: "Great experience with this company. Prompt communication and professional service.",
-        imageSrc: "/path/to/avatar3.jpg",
+        description: "Great experience with this company. Prompt communication and professional service.",
+        imageSrc: "https://images-na.ssl-images-amazon.com/images/I/61Xuv0TiIRL._AC_UL600_SR600,600_.jpg",
     }
 ];
 
 
 const Comments = () => {
     return (
-        <div>
-            {comments.map((comment) => (
-                <Comment
+        <div className=" bg-blue-200 py-20">
+            <h2 className="text-4xl font-bold mb-8 text-center text-primary">Client Comments</h2>
+            <div className="w-full carousel">
+                {comments.map(comment => <Comment
                     key={comment.id}
-                    name={comment.name}
-                    comment={comment.comment}
-                    imageSrc={comment.imageSrc}
+                    comment={comment}
                 />
-            ))}
+                )}
+            </div>
         </div>
     );
 };
