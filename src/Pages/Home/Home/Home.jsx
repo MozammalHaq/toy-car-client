@@ -1,9 +1,14 @@
+import Banner from "../Banner/Banner";
+import Comments from "../Comments/Comments";
+import Gallerys from "../Gallerys/Gallerys";
 
 
 const Home = () => {
     return (
         <div>
-            <h2>This is Home page.</h2>
+            <Banner/>
+            <Gallerys/>
+            <Comments/>
         </div>
     );
 };
