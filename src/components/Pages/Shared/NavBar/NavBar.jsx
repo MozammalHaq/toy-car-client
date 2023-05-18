@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const NavBar = () => {
-    const {user, logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     console.log(user)
 
     const handleLogout = () => {
@@ -16,12 +16,22 @@ const NavBar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/allToys'>All Toys</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
-        <li><Link to='/addToys'>Add Toys</Link></li>
-        <li><Link to='/myToys'>My Toys</Link></li>
-        <li><Link to='/login'>Login</Link></li>
-        <span>{user?.email}</span>
-        <button onClick={handleLogout}>Log Out</button>
-        <li><Link to='/signUp'>Sign Up</Link></li>
+        {
+            user ?
+                <>
+                    <li><Link to='/addToys' className='font-bold'>Add Toys</Link></li>
+                    <li><Link to='/myToys' className='font-bold'>My Toys</Link></li>
+                    <button onClick={handleLogout} className='text-orange-600 font-bold'>Log Out</button>
+
+                </>
+                :
+                <>
+                    <li><Link to='/signUp' className='font-bold'>Sign Up</Link></li>
+                    <li><Link to='/login' className='font-bold'>Login</Link></li>
+                </>
+        }
+
+
     </>
     return (
         <div className="bg-indigo-600 text-white">
@@ -43,7 +53,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end tooltip tooltip-bottom" data-tip={user?.displayName}>
-                    <img className='h-10 w-10 avatar btn-circle' src={user?.photoURL} />
+                    {user && <img className='h-10 w-10 avatar btn-circle' src={user?.photoURL} />}
                 </div>
             </div>
         </div>
