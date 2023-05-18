@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 
 
 const AddToys = () => {
+
+    const {user} = useContext(AuthContext);
 
     const handleAdd = (event) => {
         event.preventDefault();
@@ -19,7 +23,33 @@ const AddToys = () => {
         const quantity = form.quantity.value;
         const description = form.description.value;
 
-        console.log({ imageUrl, toyName, sellerName, sellerEmail, subCategory, price, rating, quantity, description });
+        const toy = {
+            imageUrl,
+            toyName,
+            sellerName,
+            sellerEmail,
+            subCategory,
+            price,
+            rating,
+            quantity,
+            description
+        };
+        console.log(toy)
+        fetch('http://localhost:5000/toys', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(toy)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.insertedId){
+                    alert("Added Toy")
+                }
+            })
+
 
     }
 
@@ -76,6 +106,7 @@ const AddToys = () => {
                                     type="email"
                                     placeholder="Enter seller email"
                                     name="sellerEmail"
+                                    defaultValue={user?.email}
                                 />
                             </div>
                         </div>
@@ -84,18 +115,13 @@ const AddToys = () => {
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="subCategory">
                                     Sub-category
                                 </label>
-                                <select
+                                <input
                                     className="appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
                                     id="subCategory"
                                     type="text"
                                     placeholder="Enter sub-category"
                                     name="subCategory"
-                                >
-                                    <option value="">Racing</option>
-                                    <option value="">Tour</option>
-                                    <option value="">Transformer</option>
-                                    <option value="">Family</option>
-                                </select>
+                                />
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
