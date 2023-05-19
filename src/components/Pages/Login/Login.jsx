@@ -13,10 +13,6 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
 
-    // Toast Message
-    { !user && toast("Please, First Login"); }
-    // toast("Please, First Login");
-
     const handleSignIn = (event) => {
         event.preventDefault();
 
@@ -50,6 +46,9 @@ const Login = () => {
                 setError(error.message);
             })
     }
+
+    // Toast Message
+    { !user && toast("Please, First Login"); }
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
