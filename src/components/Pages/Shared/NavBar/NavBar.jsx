@@ -5,11 +5,13 @@ import logo from '../../../../assets/logo.png'
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user)
+    // console.log(user)
 
     const handleLogout = () => {
         logOut()
-            .then(result => { })
+            .then(result => {
+                console.log(result.user)
+             })
             .catch(error => { console.error(error) })
     }
 

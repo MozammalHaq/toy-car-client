@@ -20,11 +20,11 @@ const ToyRow = ({ toy, handleDelete }) => {
             </td>
             <td className="text-xl font-bold">{toyName}</td>
             <td className="text-xl font-bold">{subCategory}</td>
-            <td className="text-xl font-bold">Tk. {quantity}</td>
+            <td className="text-xl font-bold">{quantity}</td>
             <td className="text-xl font-bold">Tk. {price}</td>
             <th>
                 <Link to={`/updateToyData/${_id}`}>
-                    <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M14 3v4a1 1 0 0 0 1 1h4M18.4 3.6a2 2 0 0 1 2.83 0l.57.57a2 2 0 0 1 0 2.83L12 21l-4-4L18.4 3.6z" />
                     </svg>
                 </Link>

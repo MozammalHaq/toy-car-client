@@ -50,14 +50,11 @@ const MyToys = () => {
         })
     }
 
-    const handleUpdate = id => {
-        console.log(id);
-    }
 
     return (
-        <div>
-            <h2 className="text-6xl">My Toys</h2>
-            <div className="overflow-x-auto w-full">
+        <div className='mb-20'>
+            <h2 className="text-5xl font-bold text-primary text-center my-10">My Toys</h2>
+            <div className="overflow-x-auto w-full navbar max-w-6xl mx-auto lg:px-8">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
@@ -78,7 +75,6 @@ const MyToys = () => {
                                 key={toy._id}
                                 toy={toy}
                                 handleDelete={handleDelete}
-                                handleUpdate={handleUpdate}
                             ></ToyRow>)
                         }
                     </tbody>

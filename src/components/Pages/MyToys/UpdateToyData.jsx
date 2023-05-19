@@ -3,7 +3,11 @@
 //     console.log(id);
 // }
 
+import { useLoaderData } from "react-router-dom";
+
 const UpdateToyData = () => {
+    const data = useLoaderData();
+    console.log(data);
     return (
         <div className="bg-blue-50 py-20">
             <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
