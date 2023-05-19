@@ -1,15 +1,21 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
     const [error, setError] = useState('');
 
-    const { signIn, signInGoogle } = useContext(AuthContext);
+    const { user, signIn, signInGoogle } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
+
     const from = location.state?.from?.pathname || '/';
+
+    // Toast Message
+    { !user && toast("Please, First Login"); }
+    // toast("Please, First Login");
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -47,6 +53,7 @@ const Login = () => {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+            <ToastContainer />
             <div className="max-w-md w-full px-6 py-8 bg-white shadow-md rounded-md">
                 <h2 className="text-2xl font-semibold mb-6">Login</h2>
                 <form onSubmit={handleSignIn}>
