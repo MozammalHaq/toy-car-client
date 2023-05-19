@@ -16,8 +16,7 @@ const ToyDetails = () => {
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
-        const id = _id;
-        const toy = { name, email, id };
+        const toy = {_id, name, email, imageUrl, toyName, price, subCategory};
         console.log(toy);
 
         // Send data to server

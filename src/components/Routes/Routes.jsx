@@ -7,10 +7,10 @@ import SignUp from "../Pages/SignUp/SignUp";
 import AllToys from "../Pages/AllToys/AllToys";
 import Blogs from "../Pages/Blogs/Blogs";
 import AddToys from "../Pages/AddToys/AddToys";
-import MyToys from "../Pages/MyToys/MyToys";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import ToyDetails from "../Pages/ToyDetails/ToyDetails";
+import MyToys from "../Pages/MyToys/MyToys";
 
 
 const router = createBrowserRouter([
@@ -44,8 +44,8 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><AddToys /></PrivateRoute>
             },
             {
-                path: '/myToys',
-                element: <PrivateRoute><MyToys /></PrivateRoute>
+                path: '/mytoys',
+                element: <PrivateRoute><MyToys/> </PrivateRoute>
             },
             {
                 path: '/toyDetails/:id',

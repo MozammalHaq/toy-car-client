@@ -1,7 +1,7 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import { AuthContext } from '../../../AuthProvider/AuthProvider';
+// import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const Category = ({ toy }) => {
     // console.log(toy)
