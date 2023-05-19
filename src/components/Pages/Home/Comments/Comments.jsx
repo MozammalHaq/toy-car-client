@@ -1,4 +1,8 @@
 import Comment from "./Comment";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 const comments = [
     {
@@ -24,9 +28,18 @@ const comments = [
 
 const Comments = () => {
     return (
-        <div className=" bg-blue-200 py-20">
+        <div className="bg-blue-200 py-20">
             <h2 className="text-4xl font-bold mb-8 text-center text-primary">Client Comments</h2>
-            <div className="w-full carousel">
+            <div
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-anchor-placement="top-center"
+                className="w-full carousel">
                 {comments.map(comment => <Comment
                     key={comment.id}
                     comment={comment}

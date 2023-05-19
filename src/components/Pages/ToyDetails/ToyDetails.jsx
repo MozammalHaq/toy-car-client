@@ -1,27 +1,90 @@
+import { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom'
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const ToyDetails = () => {
+    const { user } = useContext(AuthContext);
     const details = useLoaderData();
     console.log(details)
-    const { description, imageUrl, price, quantity, rating, sellerEmail, sellerName, subCategory, toyName, id, } = details;
+
+    const { _id, description, imageUrl, price, quantity, rating, sellerEmail, sellerName, subCategory, toyName} = details;
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const id = _id;
+        const toy = { name, email, id };
+        console.log(toy);
+
+        // Send data to server
+        fetch('http://localhost:5000/toys', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(toy)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    alert("Choose My Toy")
+                }
+            })
+    }
+
     return (
         <div className='bg-blue-50 py-20'>
-            <div className="max-w-xl mx-auto p-8 bg-white rounded-lg shadow-md">
+            <div className="max-w-2xl lg:max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-md">
                 <div className="flex items-center mb-6">
                     <img className="w-16 h-16 rounded-full mr-4" src={imageUrl} alt={toyName} />
                     <h2 className="text-3xl font-bold">{toyName}</h2>
                 </div>
-                <div className="mb-6">
-                    <p className="text-gray-600 mb-2">ID: {id}</p>
-                    <p className="text-gray-600 mb-2">Category: {subCategory}</p>
-                    <p className="text-gray-600 mb-2">Seller Name: {sellerName}</p>
-                    <p className="text-gray-600 mb-2">Seller Email: {sellerEmail}</p>
-                </div>
-                <div>
-                    <p className="text-gray-600 mb-2">Description: {description}</p>
-                    <p className="text-gray-600 mb-2">Price: ${price}</p>
-                    <p className="text-gray-600 mb-2">Quantity: {quantity}</p>
-                    <p className="text-gray-600 mb-2">Ratings: {rating}</p>
+                <div className='flex gap-6'>
+                    <div className='w-1/2'>
+                        <p className="text-gray-600 mb-2">Category: {subCategory}</p>
+                        <p className="text-gray-600 mb-2">Seller Name: {sellerName}</p>
+                        <p className="text-gray-600 mb-2">Seller Email: {sellerEmail}</p>
+                        <p className="text-gray-600 mb-2">Description: {description}</p>
+                        <p className="text-gray-600 mb-2">Price: ${price}</p>
+                        <p className="text-gray-600 mb-2">Quantity: {quantity}</p>
+                        <p className="text-gray-600 mb-2">Ratings: {rating}</p>
+                    </div>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                                Name
+                            </label>
+                            <input
+                                className="mb-4 appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+                                id="name"
+                                type="text"
+                                placeholder="Write your name"
+                                name="name"
+                                defaultValue={user?.displayName}
+                            />
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                                Your Email
+                            </label>
+                            <input
+                                className="mb-4 appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+                                id="email"
+                                type="email"
+                                placeholder="Write your email"
+                                name="email"
+                                defaultValue={user?.email}
+                            />
+                            <button
+                                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="submit"
+                            >
+                                Choose My Toy
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
