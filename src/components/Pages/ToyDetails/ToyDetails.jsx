@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom'
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2'
 
 const ToyDetails = () => {
     const { user } = useContext(AuthContext);
     const details = useLoaderData();
     console.log(details)
 
-    const { _id, description, imageUrl, price, quantity, rating, sellerEmail, sellerName, subCategory, toyName} = details;
+    const { _id, description, imageUrl, price, quantity, rating, sellerEmail, sellerName, subCategory, toyName } = details;
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -31,7 +32,12 @@ const ToyDetails = () => {
             .then(data => {
                 console.log(data)
                 if (data.insertedId) {
-                    alert("Choose My Toy")
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Your Toy has been saved',
+                        showConfirmButton: true
+                    })
                 }
             })
     }
@@ -64,6 +70,7 @@ const ToyDetails = () => {
                                 type="text"
                                 placeholder="Write your name"
                                 name="name"
+                                required
                                 defaultValue={user?.displayName}
                             />
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
@@ -75,6 +82,7 @@ const ToyDetails = () => {
                                 type="email"
                                 placeholder="Write your email"
                                 name="email"
+                                required
                                 defaultValue={user?.email}
                             />
                             <button
