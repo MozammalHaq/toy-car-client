@@ -10,8 +10,8 @@ const NavBar = () => {
     const handleLogout = () => {
         logOut()
             .then(result => {
-                console.log(result.user)
-             })
+                console.log(result?.user)
+            })
             .catch(error => { console.error(error) })
     }
 
@@ -20,18 +20,12 @@ const NavBar = () => {
         <li><Link to='/allToys'>All Toys</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
         {
-            user ?
-                <>
-                    <li><Link to='/addToys' className='font-bold'>Add Toys</Link></li>
-                    <li><Link to='/myToys' className='font-bold'>My Toys</Link></li>
-                    <button onClick={handleLogout} className='text-orange-600 font-bold'>Log Out</button>
-
-                </>
-                :
-                <>
-                    <li><Link to='/signUp' className='font-bold'>Sign Up</Link></li>
-                    <li><Link to='/login' className='font-bold'>Login</Link></li>
-                </>
+            user &&
+            <>
+                <li><Link to='/addToys' className='font-bold'>Add Toys</Link></li>
+                <li><Link to='/myToys' className='font-bold'>My Toys</Link></li>
+                <button onClick={handleLogout} className='text-orange-600 font-bold'>Log Out</button>
+            </>
         }
 
 
@@ -57,7 +51,10 @@ const NavBar = () => {
                 </div>
                 <div className="navbar-end text-end" >
                     <span className='tooltip tooltip-bottom' data-tip={user?.displayName}>
-                        {user && <img className='h-10 w-10 avatar btn-circle text-end' src={user?.photoURL} />}
+                        {user
+                            ? <img className='h-10 w-10 avatar btn-circle text-end' src={user?.photoURL} />
+                            : <Link to='/login' className='font-bold btn btn-circle btn-info text-[12px]'>Login</Link>
+                        }
                     </span>
                 </div>
             </div>

@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 
 
 const AddToys = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const handleAdd = (event) => {
         event.preventDefault();
@@ -35,7 +36,7 @@ const AddToys = () => {
             description
         };
         console.log(toy)
-        fetch('http://localhost:5000/toys', {
+        fetch('http://localhost:5000/gallery', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -44,9 +45,15 @@ const AddToys = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                if(data.insertedId){
-                    alert("Added Toy")
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Toy saved Successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    form.reset();
                 }
             })
 

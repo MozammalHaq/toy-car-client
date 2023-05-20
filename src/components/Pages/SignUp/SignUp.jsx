@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 
 const SignUp = () => {
 
-    const { createUser, signInGoogle } = useContext(AuthContext);
+    const { createUser, signInGoogle, updateUserData } = useContext(AuthContext);
+
+    // console.log(updateUserData)
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -14,13 +16,15 @@ const SignUp = () => {
 
         const email = form.email.value;
         const password = form.password.value;
+        const name = form.name.value;
+        const url = form.url.value;
 
-        console.log(email, password)
-        
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                updateUserData(name, url)
+                    .then(() => { }).catch(error => console.log(error))
                 form.reset()
                 // navigate(from, { replace: true })
             })
@@ -29,6 +33,7 @@ const SignUp = () => {
                 console.log(error)
             })
     }
+
 
     // Google Sign In
     const handleGoogleSignIn = () => {
