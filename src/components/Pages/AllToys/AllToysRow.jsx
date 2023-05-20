@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const AllToysRow = ({ toy }) => {
-    console.log(toy)
     const { _id, subCategory, price, toyName, quantity, sellerName } = toy;
     return (
         <tr>
