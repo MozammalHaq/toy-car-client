@@ -9,21 +9,34 @@ const Footer = () => {
                 <footer className="footer p-10 text-base-content">
                     <div>
                         <img src={logo} alt="" />
-                        <p className="text-white">ToyCar Industries Ltd.<br />Providing reliable service since 2012</p>
+                        <address className="text-white">
+                            Village: Khalilpur, <br/>
+                            Post: Bhorajagotpur, <br/>
+                            Thana: Lalmai, <br/>
+                            District: Cumilla. <br/>
+                            008801914708856
+                        </address>
                     </div>
                     <div>
-                        <span className="footer-title text-black">Regular Car</span>
+                        <span className="footer-title text-black">Category</span>
                         <a className="link link-hover text-white">Racing Car</a>
                         <a className="link link-hover text-white">Sports Car</a>
-                        <a className="link link-hover text-white">Truck</a>
+                        <a className="link link-hover text-white">Regular Car</a>
                         <a className="link link-hover text-white">Mini Fire truck</a>
                     </div>
                     <div>
-                        <span className="footer-title text-black">Company</span>
+                        <span className="footer-title text-black">Pages</span>
                         <Link to='/' className="link link-hover text-white">Home</Link>
                         <Link to='/blogs' className="link link-hover text-white">Blogs</Link>
                         <Link to='/login' className="link link-hover text-white">Login</Link>
                         <Link to='/signup' className="link link-hover text-white">Sign Up</Link>
+                    </div>
+                    <div>
+                        <span className="footer-title text-black">Social Links</span>
+                        <a className="link link-hover text-white">Facebook</a>
+                        <a className="link link-hover text-white">LinkedIn</a>
+                        <a className="link link-hover text-white">Tweeter</a>
+                        <a className="link link-hover text-white">Instagram</a>
                     </div>
                     <div>
                         <span className="footer-title text-black">Legal</span>
