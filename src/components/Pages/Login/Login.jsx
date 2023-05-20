@@ -17,8 +17,6 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-
-
     const from = location.state?.from?.pathname || '/';
 
     const handleSignIn = (event) => {

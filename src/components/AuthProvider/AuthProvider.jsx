@@ -29,10 +29,13 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider)
     }
 
-    // update user 
-    const updateUserData = (name, url) => {
+    // update User and url
+    const updateUser = (user, name, url) => {
         setLoading(true)
-        return updateProfile(user, { displayName: name, photoURL: url })
+        return updateProfile(user, {
+            displayName: name,
+            photoURL: url
+        })
     }
 
     // User monitoring
@@ -58,7 +61,7 @@ const AuthProvider = ({ children }) => {
         createUser,
         signIn,
         signInGoogle,
-        updateUserData,
+        updateUser,
         logOut
     }
 

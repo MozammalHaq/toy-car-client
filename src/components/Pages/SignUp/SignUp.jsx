@@ -1,13 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 const SignUp = () => {
+    const [error, setError] = useState('');
+    const { createUser, signInGoogle, updateUser } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const { createUser, signInGoogle, updateUserData } = useContext(AuthContext);
-
-    // console.log(updateUserData)
+    const from = location.state?.from?.pathname || '/';
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -21,19 +23,19 @@ const SignUp = () => {
 
         createUser(email, password)
             .then(result => {
+                setError('')
                 const user = result.user;
                 console.log(user)
-                updateUserData(name, url)
-                    .then(() => { }).catch(error => console.log(error))
                 form.reset()
-                // navigate(from, { replace: true })
+                updateUser(result.user, name, url)
             })
             .catch(error => {
-                // setError(error.message)
-                console.log(error)
+                setError(error.message)
             })
+        updateUser(name, url)
+            .then(() => { })
+            .catch(error => setError(error.message))
     }
-
 
     // Google Sign In
     const handleGoogleSignIn = () => {
@@ -41,7 +43,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
-                // navigate(from, { replace: true })
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error.message);
@@ -52,6 +54,7 @@ const SignUp = () => {
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
             <div className="max-w-md w-full px-6 py-8 bg-white shadow-md rounded-md">
                 <h2 className="text-2xl font-semibold mb-6">Sign Up</h2>
+                <p className='error-text'>{error}</p>
                 <form onSubmit={handleSignIn}>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
