@@ -7,16 +7,16 @@ const Category = ({ toy }) => {
     const { user } = useContext(AuthContext);
 
     const handleDetail = () => {
-        { !user && alert("Please, First Login"); }
+        { !user && alert("You have to log in first to view details."); }
     }
     return (
         <div className="card bg-base-100 shadow-xl overflow-hidden">
             <figure className="p-4"><img src={imageUrl} alt="Shoes" /></figure>
             <div className="card-body bg-blue-100">
-                <h2 className="card-title">{toyName}</h2>
-                <div className="text-2xl flex justify-between my-4">
-                    <span>{rating}</span>
-                    <span className="font-bold text-primary">Tk. {price}</span>
+                <h2 className="card-title">Toy name: <span className='text-green-600 font-bold'>{toyName}</span></h2>
+                <div className="text-xl flex justify-between my-4">
+                    <span>Rating: {rating}</span>
+                    <span className="font-bold text-primary">Price: {price} Tk.</span>
                 </div>
                 <div className="card-actions justify-end">
                     <button onClick={handleDetail} className="btn btn-primary">

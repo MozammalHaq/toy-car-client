@@ -1,9 +1,9 @@
 
 
-const Gall = () => {
+const Gall = ({toy}) => {
     return (
-        <div>
-            
+        <div className="mx-10">
+            <img className="h-80" src={toy.imageUrl} alt="" />
         </div>
     );
 };

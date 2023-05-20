@@ -29,8 +29,7 @@ const Banner = () => {
                 className="font-bold text-primary"
               > Toy Car</span></h2>
             <p className="text-lg text-gray-700 my-6">
-              Banner Description Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Aenean consequat mauris vel lacus luctus, eget fringilla nunc tristique.
+              It is a latest <span className='font-bold'>racing car</span>. High quality and 4 Engine 356 CC. Metal glassy clean body. You can choose this one. Remote control system.
             </p>
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               Learn More

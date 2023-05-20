@@ -14,14 +14,16 @@ const Gallery = () => {
     }, [])
 
     return (
-        <Marquee>
-            {
-                toys.map(toy => <Gall
-                    key={toy._id}
-                    
-                ></Gall>)
-            }
-        </Marquee>
+        <div>
+            <h2 className="text-4xl font-semibold text-center my-8 text-primary">Gallery</h2>            <Marquee>
+                {
+                    toys.map(toy => <Gall
+                        key={toy._id}
+                        toy={toy}
+                    ></Gall>)
+                }
+            </Marquee>
+        </div>
     );
 };
 
