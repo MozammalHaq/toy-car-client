@@ -26,9 +26,8 @@ const NavBar = () => {
                 <li><Link to='/myToys' className='font-bold'>My Toys</Link></li>
             </>
         }
-
-
     </>
+    
     return (
         <div className="bg-indigo-600 text-white">
             <div className="navbar max-w-6xl mx-auto lg:px-8">
