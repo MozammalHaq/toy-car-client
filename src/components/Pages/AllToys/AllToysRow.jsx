@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 
-const AllToysRow = ({toy}) => {
-    const {_id, subCategory, price} = toy;
+const AllToysRow = ({ toy }) => {
+    console.log(toy)
+    const { _id, subCategory, price, toyName, quantity, sellerName } = toy;
     return (
         <tr>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
+            <td>{sellerName && sellerName}</td>
+            <td>{toyName}</td>
             <td>{subCategory}</td>
             <td>{price}</td>
-            <td>12/16/2020</td>
+            <td>{quantity}</td>
             <td><Link to={`/toyDetails/${_id}`} className="btn btn-primary"> View Details </Link></td>
         </tr>
     );

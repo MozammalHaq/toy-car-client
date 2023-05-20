@@ -1,13 +1,6 @@
-import { useContext } from "react";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
-
-
-
 const AddToys = () => {
-
-    const { user } = useContext(AuthContext);
 
     const handleAdd = (event) => {
         event.preventDefault();
@@ -81,7 +74,7 @@ const AddToys = () => {
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="toyName">
-                                    Name toy
+                                    Toy name
                                 </label>
                                 <input
                                     className="appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
@@ -89,6 +82,7 @@ const AddToys = () => {
                                     type="text"
                                     placeholder="Enter toy car name"
                                     name="toyName"
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -101,6 +95,7 @@ const AddToys = () => {
                                     type="text"
                                     placeholder="Enter seller name"
                                     name="sellerName"
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
@@ -113,7 +108,6 @@ const AddToys = () => {
                                     type="email"
                                     placeholder="Enter seller email"
                                     name="sellerEmail"
-                                    defaultValue={user?.email}
                                 />
                             </div>
                         </div>
@@ -122,13 +116,15 @@ const AddToys = () => {
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="subCategory">
                                     Sub-category
                                 </label>
-                                <input
+                                <select
                                     className="appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
-                                    id="subCategory"
-                                    type="text"
-                                    placeholder="Enter sub-category"
                                     name="subCategory"
-                                />
+                                    id="subCategory"
+                                >
+                                    <option value="Regular">Regular</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Police">Police</option>
+                                </select>
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
@@ -140,6 +136,7 @@ const AddToys = () => {
                                     type="number"
                                     placeholder="Enter price"
                                     name="price"
+                                    required
                                 />
                             </div>
                             <div className="mb-4">
