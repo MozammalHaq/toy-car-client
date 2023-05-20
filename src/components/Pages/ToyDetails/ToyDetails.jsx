@@ -8,7 +8,7 @@ const ToyDetails = () => {
     const details = useLoaderData();
     console.log(details)
 
-    const { _id, description, imageUrl, price, quantity, rating, sellerEmail, sellerName, subCategory, toyName } = details;
+    const { description, imageUrl, price, quantity, rating, sellerEmail, sellerName, subCategory, toyName } = details;
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -16,7 +16,7 @@ const ToyDetails = () => {
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
-        const toy = {_id, name, email, imageUrl, toyName, price, subCategory, quantity, description, sellerName};
+        const toy = { name, email, imageUrl, toyName, price, subCategory, quantity, description, sellerName};
         console.log(toy);
 
         // Send data to server

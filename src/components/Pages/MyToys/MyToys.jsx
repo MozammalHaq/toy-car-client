@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 const MyToys = () => {
     const { user } = useContext(AuthContext)
     const [toys, setToys] = useState([]);
-    console.log(toys)
+    // console.log(toys)
 
     const url = `http://localhost:5000/toys?email=${user?.email}`
     useEffect(() => {

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-
 const ToyRow = ({ toy, handleDelete }) => {
     console.log(toy)
     const { _id, imageUrl, toyName, price, subCategory, quantity } = toy;

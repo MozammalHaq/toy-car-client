@@ -1,18 +1,51 @@
-
-// const handleUpdate = id => {
-//     console.log(id);
-// }
-
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateToyData = () => {
     const data = useLoaderData();
+    const {_id} = data;
     console.log(data);
+
+    const handleUpdateToy = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+
+        const quantity = form.quantity.value;
+        const description = form.description.value;
+        const price = form.price.value;
+
+        const updatedToy = { quantity, description, price }
+        console.log(updatedToy)
+
+        // Send data to the server
+        fetch(`http://localhost:5000/toys/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedToy)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Toy Update successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+            })
+
+    }
+
     return (
         <div className="bg-blue-50 py-20">
             <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
                 <h2 className="text-2xl font-semibold mb-6">Toy Details</h2>
-                <form>
+                <form onSubmit={handleUpdateToy}>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
                             Price
@@ -22,6 +55,7 @@ const UpdateToyData = () => {
                             id="price"
                             type="number"
                             placeholder="Enter price"
+                            name="price"
                         />
                     </div>
                     <div className="mb-4">
@@ -33,6 +67,7 @@ const UpdateToyData = () => {
                             id="quantity"
                             type="number"
                             placeholder="Enter available quantity"
+                            name="quantity"
                         />
                     </div>
                     <div className="mb-4">
@@ -43,6 +78,7 @@ const UpdateToyData = () => {
                             className="appearance-none border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full h-32 resize-none"
                             id="description"
                             placeholder="Enter description"
+                            name="description"
                         ></textarea>
                     </div>
                     <div className="flex items-center justify-center">
