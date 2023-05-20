@@ -20,7 +20,6 @@ const AllToys = () => {
         setToys(searchToy)
     }
 
-
     return (
         <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 lg:my-20 md:py-15'>
             <form onSubmit={handleSearch} className="flex items-center justify-center my-10">

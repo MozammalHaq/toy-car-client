@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider"
 import Swal from "sweetalert2";
 
 const AddToys = () => {
+    const { user } = useContext(AuthContext);
+    console.log(user)
 
     const handleAdd = (event) => {
         event.preventDefault();
@@ -95,7 +99,7 @@ const AddToys = () => {
                                     type="text"
                                     placeholder="Enter seller name"
                                     name="sellerName"
-                                    required
+                                    defaultValue={user && user?.displayName}
                                 />
                             </div>
                             <div className="mb-4">
@@ -108,6 +112,7 @@ const AddToys = () => {
                                     type="email"
                                     placeholder="Enter seller email"
                                     name="sellerEmail"
+                                    defaultValue={user && user?.email}
                                 />
                             </div>
                         </div>
