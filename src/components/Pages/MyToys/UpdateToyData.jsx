@@ -4,7 +4,7 @@ import useTitle from "../../../hooks/useTitle";
 
 const UpdateToyData = () => {
     const data = useLoaderData();
-    const {_id} = data;
+    const {_id, quantity, description, price } = data;
     useTitle("Update Toy Data")
 
     const handleUpdateToy = (event) => {
@@ -20,7 +20,7 @@ const UpdateToyData = () => {
         console.log(updatedToy)
 
         // Send data to the server
-        fetch(`http://localhost:5000/toys/${_id}`, {
+        fetch(`https://toy-car-server-vert.vercel.app/toys/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -38,6 +38,7 @@ const UpdateToyData = () => {
                         confirmButtonText: 'Ok'
                     })
                 }
+                form.reset()
             })
 
     }
@@ -57,6 +58,7 @@ const UpdateToyData = () => {
                             type="number"
                             placeholder="Enter price"
                             name="price"
+                            defaultValue={price}
                         />
                     </div>
                     <div className="mb-4">
@@ -69,6 +71,7 @@ const UpdateToyData = () => {
                             type="number"
                             placeholder="Enter available quantity"
                             name="quantity"
+                            defaultValue={quantity}
                         />
                     </div>
                     <div className="mb-4">
@@ -80,6 +83,7 @@ const UpdateToyData = () => {
                             id="description"
                             placeholder="Enter description"
                             name="description"
+                            defaultValue={description}
                         ></textarea>
                     </div>
                     <div className="flex items-center justify-center">

@@ -15,7 +15,7 @@ const Banner = () => {
       data-aos-once="false"
       data-aos-anchor-placement="top-center"
       className="flex flex-wrap items-center justify-center py-12 bg-blue-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:py-8 lg:px-10">
         <div className="md:flex md:flex-row-reverse items-center">
           <div className="md:w-1/2">
             <img
@@ -29,7 +29,7 @@ const Banner = () => {
                 className="font-bold text-primary"
               > Toy Car</span></h2>
             <p className="text-lg text-gray-700 my-6">
-              It is a latest <span className='font-bold'>racing car</span>. High quality and 4 Engine 356 CC. Metal glassy clean body. You can choose this one. Remote control system.
+            The Biggest Marketplace for Toy Cars is a vast online platform where buyers and sellers connect to trade a wide range of toy cars. It offers an extensive selection, competitive prices, and a seamless shopping experience, catering to enthusiasts and collectors alike.
             </p>
             <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               Learn More

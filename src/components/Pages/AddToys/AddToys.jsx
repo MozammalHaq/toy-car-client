@@ -34,7 +34,7 @@ const AddToys = () => {
             description
         };
         console.log(toy)
-        fetch('http://localhost:5000/gallery', {
+        fetch('https://toy-car-server-vert.vercel.app/gallery', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

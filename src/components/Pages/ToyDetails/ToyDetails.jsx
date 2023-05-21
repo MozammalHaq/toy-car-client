@@ -21,7 +21,7 @@ const ToyDetails = () => {
         console.log(toy);
 
         // Send data to server
-        fetch('http://localhost:5000/toys', {
+        fetch('https://toy-car-server-vert.vercel.app/toys', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

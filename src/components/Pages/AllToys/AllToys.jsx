@@ -7,7 +7,7 @@ const AllToys = () => {
     const [toys, setToys] = useState([])
     useTitle("All Toys")
 
-    const url = 'http://localhost:5000/toys'
+    const url = 'https://toy-car-server-vert.vercel.app/toys'
     useEffect(() => {
         fetch(url)
             .then(res => res.json())

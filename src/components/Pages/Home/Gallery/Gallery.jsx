@@ -6,7 +6,7 @@ import Gall from './Gall';
 const Gallery = () => {
     const [toys, setToys] = useState([]);
 
-    const url = 'http://localhost:5000/gallery'
+    const url = 'https://toy-car-server-vert.vercel.app/gallery'
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
