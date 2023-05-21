@@ -1,3 +1,5 @@
+import useTitle from "../../../hooks/useTitle";
+
 const blogs = [
     {
         id: 1,
@@ -23,6 +25,7 @@ const blogs = [
 
 
 const Blogs = () => {
+    useTitle("Blogs")
     return (
         <div className="bg-blue-50 py-10">
             <div className="max-w-lg mx-auto">

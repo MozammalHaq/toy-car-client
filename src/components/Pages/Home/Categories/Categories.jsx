@@ -16,7 +16,7 @@ const Categories = () => {
     return (
         <Tabs className="py-20 bg-slate-200">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl font-semibold text-center mb-8 text-primary">Shop by Category {toys.length}</h2>
+                <h2 className="text-4xl font-semibold text-center mb-8 text-primary">Shop By Category</h2>
                 <TabList>
                     <Tab>All Car</Tab>
                     <Tab>Sports Car</Tab>
